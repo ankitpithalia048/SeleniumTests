@@ -48,12 +48,12 @@ namespace AngularTesting
                 
                 var pass = driver.FindElementByClassName("password");
                 Assert.IsNotNull(pass);
-                pass.SendKeys("ankit123");
+                pass.SendKeys("ankit");
                 WebDriverWait enterpass = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
 
                 IWebElement signUpClick = driver.FindElementByClassName("registerbutton");
                 signUpClick.Click();
-                WebDriverWait waitForControl = new WebDriverWait(driver, TimeSpan.FromSeconds(40));
+                WebDriverWait waitForControl = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                 /* Console.Read();*/
                 var text = driver.PageSource.Contains("Angular Testing");
                 
@@ -66,9 +66,10 @@ namespace AngularTesting
                 }
                 else
                 {
-
+                    
                     Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
                     ss.SaveAsFile("D:\\simplilearn .net\\error.png", OpenQA.Selenium.ScreenshotImageFormat.Png);
+                    Assert.IsTrue(text);
                 }
 
 
